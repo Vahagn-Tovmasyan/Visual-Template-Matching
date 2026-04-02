@@ -25,6 +25,8 @@ Given a template image T (a small crop of a visual target) and a scene image S (
 | **E-LoFTR** | Kornia LoFTR dense feature matching + Sequential RANSAC + adaptive confidence | Dense matches on low-texture objects where sparse fails | Best on source image; struggles across different scenes |
 | **SAM 2** | SAM 2.1 Hiera — Segments entire scene, matches segments via colour/shape/size scoring | Finds objects by appearance without texture matching | CPU-only is slow (~60-90s); colour-based so may match similar-looking objects |
 
+I evaluated classical matching, learned feature matching, VLM-based semantic matching, and detector-assisted hybrids. On this benchmark, Grounding DINO and YOLO-based methods achieved the strongest overall localization, while VLM-based methods were useful for semantic verification but less reliable as standalone localizers. For arbitrary-object template matching, learned and semantic matching approaches are more general than YOLO, which depends on known classes. DINO + Qwen method performed significantly better than the standalone models.
+
 ## Quick Start
 
 ### 1. Install
