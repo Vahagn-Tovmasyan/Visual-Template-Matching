@@ -19,7 +19,7 @@ Given a template image T (a small crop of a visual target) and a scene image S (
 | **Hybrid** | Classical pre-filter (low threshold) -> VLM re-ranker per crop | Best accuracy: CV finds candidates fast, VLM confirms identity | Requires API key, cost proportional to number of candidates |
 | **DINO** | Grounding DINO (local model `grounding-dino-tiny`) | Excellent multi-instance detection and high-quality bounding boxes | Requires ~2GB env footprint; slow on CPU-only machines (~4s) |
 | **DINO-Hybrid** | DINO pre-filter (low threshold) -> VLM re-ranker per crop | Best in class recall and geometric precision | Slowest combined pipeline; high compute + API cost |
-| **YOLO** | YOLO11 Object Detector (local model `yolo11n.pt`) | Ultra-fast; great for COCO classes | Fails on arbitrary custom objects not in the COCO dataset |
+| **YOLO** | YOLO11 Object Detector (local model `yolo11s.pt`) | Ultra-fast; great for COCO classes | Fails on arbitrary custom objects not in the COCO dataset |
 | **YOLO-Hybrid** | YOLO pre-filter -> VLM re-ranker per crop | High-speed semantic matching pipeline | Only works if the template is a recognized COCO class |
 | **LightGlue** | DISK keypoints + LightGlue attention-based matcher (via kornia) + RANSAC homography | Best sparse matcher; handles large viewpoint/scale changes | Needs kornia install (~500MB); matches pixel patterns, not semantics |
 | **E-LoFTR** | Kornia LoFTR dense feature matching + Sequential RANSAC + adaptive confidence | Dense matches on low-texture objects where sparse fails | Best on source image; struggles across different scenes |
