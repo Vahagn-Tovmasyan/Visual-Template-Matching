@@ -1,0 +1,49 @@
+# Environment
+.env
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test outputs
+tests/test_output/
+output/
+
+# App temporaries
+.tmp_gradio/
+.cache/
+
+# Result images (generated, not source)
+result.jpg
+result_fixed.jpg
+test_output_a.jpg
+
+# Model weights (downloaded at runtime)
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+# Debug / scratch scripts
+debug_*.py
+check_*.py
+test_*_debug.py
+test_*_load.py
+test_*_kwargs.py

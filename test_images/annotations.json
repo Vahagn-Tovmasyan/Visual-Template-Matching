@@ -1,0 +1,138 @@
+{
+    "annotations": [
+        {
+            "template": "000000017029_Template.jpg",
+            "scene": "000000017029.jpg",
+            "scenario": "A",
+            "bboxes": [
+                [
+                    315,
+                    78,
+                    97,
+                    45
+                ]
+            ]
+        },
+        {
+            "template": "000000017029_Template.jpg",
+            "scene": "gettyimages-2196099952-2048x2048.jpg",
+            "scenario": "B",
+            "bboxes": [
+                [
+                    1304,
+                    125,
+                    180,
+                    175
+                ]
+            ]
+        },
+        {
+            "template": "000000017029_Template.jpg",
+            "scene": "gettyimages-183247176-2048x2048.jpg",
+            "scenario": "B",
+            "bboxes": [
+                [
+                    1249,
+                    97,
+                    79,
+                    161
+                ]
+            ]
+        },
+        {
+            "template": "000000017029_Template.jpg",
+            "scene": "gettyimages-2147502063-2048x2048.jpg",
+            "scenario": "B",
+            "bboxes": [
+                [
+                    790,
+                    197,
+                    86,
+                    105
+                ]
+            ]
+        },
+        {
+            "template": "000000017029_Template.jpg",
+            "scene": "gettyimages-104789210-612x612.jpg",
+            "scenario": "B",
+            "bboxes": [
+                [
+                    0,
+                    0,
+                    241,
+                    156
+                ]
+            ]
+        },
+        {
+            "template": "000000017029_Template.jpg",
+            "scene": "istockphoto-183252423-2048x2048.jpg",
+            "scenario": "C",
+            "bboxes": [
+                [
+                    494,
+                    226,
+                    118,
+                    71
+                ]
+            ]
+        },
+        {
+            "template": "000000017029_Template.jpg",
+            "scene": "istockphoto-607730844-2048x2048.jpg",
+            "scenario": "C",
+            "bboxes": [
+                [
+                    789,
+                    513,
+                    440,
+                    212
+                ]
+            ]
+        },
+        {
+            "template": "000000017029_Template.jpg",
+            "scene": "Generated Image April 01, 2026 - 9_02PM.png",
+            "scenario": "D",
+            "bboxes": [
+                [
+                    291,
+                    673,
+                    291,
+                    270
+                ],
+                [
+                    79,
+                    240,
+                    109,
+                    50
+                ],
+                [
+                    524,
+                    219,
+                    44,
+                    22
+                ],
+                [
+                    710,
+                    200,
+                    39,
+                    26
+                ],
+                [
+                    451,
+                    108,
+                    28,
+                    22
+                ],
+                [
+                    443,
+                    217,
+                    29,
+                    19
+                ]
+            ]
+        }
+    ]
+}
