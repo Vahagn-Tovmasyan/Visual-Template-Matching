@@ -68,7 +68,8 @@ def _get_matcher():
 def _prepare_tensor(bgr_img: np.ndarray, device: str, max_dim: int = 1024):
     """Convert BGR numpy image to torch tensor [1,3,H,W] in [0,1].
 
-    DISK expects 3-channel (RGB) input, not grayscale.
+    DISK expects 3-channel (RGB) input with dimensions divisible by 16
+    (due to its U-Net architecture). We pad with zeros if needed.
     Resizes if larger than max_dim to keep inference fast.
     For very small images, upscales to give the detector enough context.
     Returns (tensor, scale_x, scale_y).
@@ -77,8 +78,8 @@ def _prepare_tensor(bgr_img: np.ndarray, device: str, max_dim: int = 1024):
 
     h, w = bgr_img.shape[:2]
 
-    # Upscale very small images
-    min_side = 64
+    # Upscale very small images — DISK needs at least 16x16
+    min_side = 128  # generous minimum for good keypoint detection
     if max(h, w) < min_side:
         up = min_side / max(h, w)
     else:
@@ -88,16 +89,28 @@ def _prepare_tensor(bgr_img: np.ndarray, device: str, max_dim: int = 1024):
     down = min(max_dim / max(h * up, w * up), 1.0)
     combined = up * down
 
-    new_h = max(8, int(h * combined))
-    new_w = max(8, int(w * combined))
+    new_h = max(16, int(h * combined))
+    new_w = max(16, int(w * combined))
+
+    # Round UP to nearest multiple of 16 (DISK U-Net requirement)
+    pad_h = (16 - new_h % 16) % 16
+    pad_w = (16 - new_w % 16) % 16
 
     resized = cv2.resize(bgr_img, (new_w, new_h))
+
+    # Pad with zeros (black) on bottom and right if needed
+    if pad_h > 0 or pad_w > 0:
+        resized = cv2.copyMakeBorder(
+            resized, 0, pad_h, 0, pad_w, cv2.BORDER_CONSTANT, value=(0, 0, 0)
+        )
+
     # Convert BGR -> RGB
     rgb = cv2.cvtColor(resized, cv2.COLOR_BGR2RGB)
     # [H,W,3] -> [3,H,W] -> [1,3,H,W]
     tensor = torch.from_numpy(rgb).float().permute(2, 0, 1) / 255.0
     tensor = tensor.unsqueeze(0).to(device)  # [1,3,H,W]
 
+    # Scale factors map back to original (exclude padding)
     scale_x = w / new_w
     scale_y = h / new_h
     return tensor, scale_x, scale_y

@@ -54,7 +54,7 @@ except ImportError:
     pass
 try:
     from src.lightglue import detect_lightglue
-    DETECTORS["LightGlue (SuperPoint + LightGlue)"] = detect_lightglue
+    DETECTORS["LightGlue (DISK + LightGlue)"] = detect_lightglue
 except ImportError:
     pass
 try:
@@ -64,7 +64,7 @@ except ImportError:
     pass
 try:
     from src.sam import detect_sam
-    DETECTORS["SAM (Segment Anything)"] = detect_sam
+    DETECTORS["SAM 2 (Segment Anything)"] = detect_sam
 except ImportError:
     pass
 
